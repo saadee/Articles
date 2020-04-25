@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CreateIcon from '@material-ui/icons/Create';
-
 import { getPosts } from '../../actions/post';
 import img from './dummy.png';
 import { getCurrentProfile } from '../../actions/profile';

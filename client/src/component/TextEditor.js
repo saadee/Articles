@@ -160,7 +160,7 @@ class TextEditor extends Component {
 						<Button variant="outlined" color="primary" style={{ margin: '1rem' }}>
 							View Articles
 						</Button>
-					</Link>
+					</Link>          
 				</div>
 			</div>
 		);
