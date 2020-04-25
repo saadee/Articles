@@ -17,7 +17,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Link } from 'react-router-dom';
 function toDataURL(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.onload = function () {
@@ -156,6 +156,11 @@ class TextEditor extends Component {
 						PUBLISH
 					</Button>
 					<ToastContainer />
+					<Link to="/articles" style={{ textDecoration: 'none', margin: '1rem' }}>
+						<Button variant="outlined" color="primary" style={{ margin: '1rem' }}>
+							View Articles
+						</Button>
+					</Link>
 				</div>
 			</div>
 		);

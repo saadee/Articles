@@ -6,7 +6,7 @@ import PrivateRoute from "./routing/PrivateRoute";
 import myStore from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
-import UserProfile from "./StudentPortal/DashBoard/userProfile/Dashboard";
+import DashBoard from "./StudentPortal/DashBoard/userProfile/Dashboard";
 import ArticleHome from "./StudentPortal/Posts/ArticleHome";
 import TextEditor from "./component/TextEditor";
 import "./App.css";
@@ -14,6 +14,7 @@ import ArticleDisplay from "./StudentPortal/Posts/ArticleDisplay";
 import login from "./Forms/signup/login";
 import signup  from './Forms/signup/signup'
 import EditArticle from './StudentPortal/Posts/EditArticle'
+import Dashboard from "./StudentPortal/DashBoard/userProfile/Dashboard";
 // import Dashboard from './views/Routing Components/BlockChain-component/Dashboard';
 
 if (localStorage.token) {
@@ -30,8 +31,8 @@ const App = () => {
         <div className="App">
           <Switch>
             <Route exact path="/" component={login} />
-            <Route exact path="/s" component={signup} />
-            <PrivateRoute exact path="/dashboard" component={UserProfile} />
+            <Route exact path="/signup" component={signup} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <Route exact path="/articles" component={ArticleHome} />
             <Route exact path="/write" component={TextEditor} />
             <Route exact path="/article/:id" component={ArticleDisplay} />

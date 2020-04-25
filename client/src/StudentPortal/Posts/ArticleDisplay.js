@@ -14,6 +14,8 @@ import { red } from '@material-ui/core/colors';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import CreateIcon from '@material-ui/icons/Create';
+
 import { getPosts } from '../../actions/post';
 import img from './dummy.png';
 import { getCurrentProfile } from '../../actions/profile';
@@ -84,49 +86,52 @@ const ArticleDisplay = ({ getPost, post: { post, loading }, match }) => {
 	return loading == null ? (
 		<Spinner />
 	) : (
-		<Container maxWidth="xl">
-			<div style={{ marginLeft: '-20px' }}>
-				<Nav />
-			</div>
-			<Container maxWidth="lg" className={classes.mainCardContainer}>
-				<Container>
-					<Card className={classes.root}>
-						<CardHeader
-							title={
-								<Typography variant="h5" className={classes.name}>
-									<Typography variant="body2" component="p" color="secondary">
-										Submitted By{' '}
+			<Container maxWidth="xl">
+				<div style={{ marginLeft: '-20px' }}>
+					<Nav />
+				</div>
+				<Container maxWidth="lg" className={classes.mainCardContainer}>
+					<Container>
+						<Card className={classes.root}>
+							<CardHeader
+								title={
+									<Typography variant="h5" className={classes.name}>
+										<Typography variant="body2" component="p" color="secondary">
+											Submitted By{' '}
+										</Typography>
+
+										{post.name}
 									</Typography>
+								}
+								subheader={
+									<Typography variant="p" className={classes.date}>
+										{new Date(post.date).toDateString()}
+									</Typography>
+								}
+								action={
+									<Link to={`/article/edit/${post._id}`} style={{ textDecoration: 'none' }}>
+										<IconButton aria-label="share" variant='outlined'>
+											<Typography>Edit</Typography>
+											<span> {''}</span>
+											<CreateIcon />
+										</IconButton></Link>
+								}
+							/>
 
-									{post.name}
+							<CardContent>
+								<Typography component="div">
+									<div
+										dangerouslySetInnerHTML={{
+											__html: post.content,
+										}}
+									/>
 								</Typography>
-							}
-							subheader={
-								<Typography variant="p" className={classes.date}>
-									{new Date(post.date).toDateString()}
-								</Typography>
-							}
-							action={
-								<IconButton aria-label="share">
-									<ShareIcon />
-								</IconButton>
-							}
-						/>
-
-						<CardContent>
-							<Typography component="div">
-								<div
-									dangerouslySetInnerHTML={{
-										__html: post.content,
-									}}
-								/>
-							</Typography>
-						</CardContent>
-					</Card>
+							</CardContent>
+						</Card>
+					</Container>
 				</Container>
 			</Container>
-		</Container>
-	);
+		);
 };
 
 ArticleDisplay.propTypes = {
