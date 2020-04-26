@@ -184,8 +184,8 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 									style={{
 										height: '150px',
 										border: '1px solid green',
-										paddingTop: '5%',
-										paddingBottom: '5%',
+										paddingTop: '7%',
+										paddingBottom: '7%',
 										// height: '100px',
 										width: '100%',
 										fontSize: '25px', fontWeight: 'bold',
