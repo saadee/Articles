@@ -163,25 +163,29 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 			<Grid item xs={12}></Grid>
 			<Grid item xs={6} style={{ marginLeft: '0.5rem' }}>
 				<Link to={`/article/${General.length ? General[0]._id : General._id}`} className={classes.link}>
-					<Card style={{ width: '100%' }}
+					<Card style={{ width: '100%', height: '400px' }}
 						className='animated zoomIn delay-1s'>
 						{' '}
 						<Container
 							style={{
 								background: `url(${General.length ? generalImg : img})`,
-								height: '450px',
+								height: '400px',
 								width: '100%',
 								color: 'white',
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
 							}}
 						>
-							<div style={{ top: '60%', position: 'relative', width: '100%' }}>
+							<div style={{
+								top: '60%', position: 'relative',
+								border: '1px solid red', height: '100px', width: '100%'
+							}}>
 								<div
 									style={{
+										border:'1px solid green',
 										paddingTop: '5%',
 										paddingBottom: '5%',
-										height: '150px',
+										// height: '100px',
 										width: '100%',
 										fontSize: '25px', fontWeight: 'bold',
 										background: 'linear-gradient(90deg, rgba(122,109,109,0) 0%, rgba(207,207,221,0.6334908963585435) 45%, rgba(227,237,238,0) 100%)',
@@ -225,7 +229,7 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 										top: '60%', position:
 											'relative',
 										width: '100%', textAlign: 'center',
-										height:'10rem',
+										height: '10rem',
 									}}>
 										<div
 											style={{
