@@ -178,14 +178,13 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 						>
 							<div style={{
 								top: '60%', position: 'relative',
-								border: '1px solid red',  width: '100%'
+								  width: '100%'
 							}}>
 								<div
 									style={{
 										height: '150px',
-										border: '1px solid green',
-										paddingTop: '7%',
-										paddingBottom: '7%',
+										paddingTop: '10%',
+										paddingBottom: '10%',
 										// height: '100px',
 										width: '100%',
 										fontSize: '25px', fontWeight: 'bold',
