@@ -169,7 +169,7 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 						<Container
 							style={{
 								background: `url(${General.length ? generalImg : img})`,
-								height: '350px',
+								height: '450px',
 								width: '100%',
 								color: 'white',
 								backgroundSize: 'cover',
