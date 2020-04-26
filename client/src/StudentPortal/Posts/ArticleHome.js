@@ -170,7 +170,7 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 							style={{
 								background: `url(${General.length ? generalImg : img})`,
 								height: '350px',
-								width: 'fit-content',
+								width: '100%',
 								color: 'white',
 								backgroundSize: 'cover',
 								backgroundRepeat: 'no-repeat',
