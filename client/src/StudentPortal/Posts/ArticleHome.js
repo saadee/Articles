@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: 'auto',
 	},
 	root1: {
-		maxWidth: 470,
+		maxWidth: 40,
 		// width:'fit-content'
 	},
 	paper: {
@@ -152,9 +152,10 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 	let generalImg = General[0] ? General[0].titleImg : '';
 	let medicalImg = Medical[0] ? Medical[0].titleImg : '';
 	let socialImg = Social[0] ? Social[0].titleImg : '';
-	let humorImg = Humor[0] ? Humor[0].titleImg : '';
-	let crisisImg = Crisis[0] ? Crisis[0].titleImg : ';';
-	return (
+
+	return loading === null ? (
+		<div>Hi </div>
+	) : (
 		<div className={classes.root}>
 			<Appbar />
 
@@ -214,7 +215,6 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 						width: '200px',
 						marginLeft: '0rem',
 						overflow: 'scroll',
-						boxShadow: ' 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19)',
 						overflowX: 'hidden' /* Hide horizontal scrollbar */,
 					}}
 				>
@@ -381,58 +381,6 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 						</Card>
 					</Grid>
 				</Grid>
-				<Grid item xs={4} className="animated bounceIn delay-3s">
-					<Grid item>
-						<Card className={classes.root1}>
-							<CardActionArea>
-								<CardMedia
-									component="img"
-									alt="Contemplative Reptile"
-									height="150"
-									width="100"
-									image={Crisis.length ? crisisImg : img}
-									title="Contemplative Reptile"
-								/>
-								<CardContent>
-									<Typography
-										variant="body2"
-										color="textSecondary"
-										component="p"
-										style={{
-											maxWidth: '400px',
-											fontWeight: 'bold',
-											fontSize: '1.2rem',
-											maxHeight: '130px',
-											overflow: 'hidden',
-										}}
-									>
-										<div
-											dangerouslySetInnerHTML={{
-												__html: Crisis.length ? Crisis[0].title : '',
-											}}
-										/>
-									</Typography>
-								</CardContent>
-							</CardActionArea>
-							<CardActions>
-								<Link
-									to={`/article/${Crisis.length ? Crisis[0]._id : Crisis._id}`}
-									className={classes.link}
-								>
-									<IconButton>
-										{' '}
-										<span style={{ fontSize: '15px' }}>See More</span>
-										<OpenInNewIcon
-											style={{
-												float: 'right',
-											}}
-										/>
-									</IconButton>
-								</Link>
-							</CardActions>
-						</Card>
-					</Grid>
-				</Grid>
 			</Grid>
 		</div>
 	);
@@ -442,6 +390,7 @@ ArticleHome.propTypes = {
 	getPosts: PropTypes.func.isRequired,
 	post: PropTypes.object.isRequired,
 	user: PropTypes.object.isRequired,
+	loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
