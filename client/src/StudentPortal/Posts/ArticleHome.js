@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: 'auto',
 	},
 	root1: {
-		maxWidth: 40,
+		maxWidth: 400,
 		// width:'fit-content'
 	},
 	paper: {
