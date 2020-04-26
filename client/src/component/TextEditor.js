@@ -17,7 +17,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import { Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+
 function toDataURL(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.onload = function () {
@@ -79,6 +80,9 @@ class TextEditor extends Component {
 	};
 
 	render() {
+		if (!this.props.isAuthenticated) {
+			return <Redirect to="/login" />;
+		}
 		return (
 			<div id="textEditorDiv">
 				<div
@@ -160,7 +164,7 @@ class TextEditor extends Component {
 						<Button variant="outlined" color="primary" style={{ margin: '1rem' }}>
 							View Articles
 						</Button>
-					</Link>          
+					</Link>
 				</div>
 			</div>
 		);
@@ -168,6 +172,7 @@ class TextEditor extends Component {
 }
 const mapStateToProps = (state) => ({
 	loggedInUserId: state.auth.user._id,
+	isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { addArticle })(TextEditor);

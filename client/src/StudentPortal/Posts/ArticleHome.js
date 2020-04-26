@@ -156,196 +156,206 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 
 	return loading === null ? (
 		<div>Hi </div>
-	) : (
-			<div className={classes.root}>
-				<Appbar />
+	) : (<div className={classes.root}>
+		<Appbar />
 
-				<Grid container spacing={3} className={classes.gridParent}>
-					<Grid item xs={12}></Grid>
-					<Grid item xs={6} style={{ marginLeft: '0.5rem' }}>
-						<Link to={`/article/${General.length ? General[0]._id : General._id}`} className={classes.link}>
-							<Card style={{ width: 'fit-content' }}
-								className='animated zoomIn delay-1s'>
+		<Grid container spacing={3} className={classes.gridParent}>
+			<Grid item xs={12}></Grid>
+			<Grid item xs={6} style={{ marginLeft: '0.5rem' }}>
+				<Link to={`/article/${General.length ? General[0]._id : General._id}`} className={classes.link}>
+					<Card style={{ width: '100%' }}
+						className='animated zoomIn delay-1s'>
+						{' '}
+						<Container
+							style={{
+								background: `url(${General.length ? generalImg : img})`,
+								height: '350px',
+								width: 'fit-content',
+								color: 'white',
+								backgroundSize: 'cover',
+								backgroundRepeat: 'no-repeat',
+							}}
+						>
+							<div style={{ top: '60%', position: 'relative', width: '100%' }}>
+								<div
+									style={{
+										paddingTop: '5%',
+										paddingBottom: '5%',
+										height: '150px',
+										width: '100%',
+										fontSize: '25px', fontWeight: 'bold',
+										background: 'linear-gradient(90deg, rgba(122,109,109,0) 0%, rgba(207,207,221,0.6334908963585435) 45%, rgba(227,237,238,0) 100%)',
+									}}
+									dangerouslySetInnerHTML={{
+										__html: General.length ? General[0].title : '',
+									}}
+								/></div>
+
+						</Container>
+					</Card>
+				</Link>
+
+			</Grid>
+			<Grid className='animated fadeIn delay-2s'
+				item
+				xs={5}
+				style={{
+					height: '400px',
+					marginLeft: '0rem',
+					overflow: 'scroll',
+					overflowX: 'hidden' /* Hide horizontal scrollbar */,
+				}}
+			>
+				{General.slice(1).map((post) => (
+					<Link to={`/article/${General.length ? post._id : post._id}`} className={classes.link}>
+						<Paper style={{ width: '500px' }}>
+							<Card style={{ width: 'fit-content' }}>
 								{' '}
 								<Container
 									style={{
-										background: `url(${generalImg})`,
-										height: '350px',
-										width: 'fit-content',
-										color: 'white',
+										background: `url(${General.length ? post.titleImg : img})`,
+										height: '250px',
+										width: '500px',
+										margin: '0.5rem',
 										backgroundSize: 'cover',
 										backgroundRepeat: 'no-repeat',
 									}}
 								>
-									<div style={{ top: '75%', position: 'relative' }}>
+									<div style={{
+										top: '60%', position:
+											'relative',
+										width: '100%', textAlign: 'center',
+										height:'10rem',
+									}}>
 										<div
-											style={{ fontSize: '25px', fontWeight: 'bold' }}
+											style={{
+												fontSize: '25px', opacity: '1',
+												width: '100%',
+												height: '400px',
+												paddingTop: '5%',
+												paddingBottom: '5%',
+												background: 'linear-gradient(90deg, rgba(122,109,109,0) 0%, rgba(207,207,221,0.6334908963585435) 45%, rgba(227,237,238,0) 100%)',
+												fontWeight: 'bold'
+											}}
 											dangerouslySetInnerHTML={{
-												__html: General.length ? General[0].title : '',
+												__html: General.length ? post.title : '',
 											}}
 										/></div>
 
 								</Container>
 							</Card>
-						</Link>
+						</Paper>
 
-					</Grid>
-					<Grid className='animated fadeIn delay-2s'
-						item
-						xs={4}
-						style={{
-							height: '400px',
-							marginLeft: '0rem',
-							overflow: 'scroll',
-							overflowX: 'hidden' /* Hide horizontal scrollbar */,
-						}}
-					>
-						{General.slice(1).map((post) => (
-							<Link to={`/article/${General.length ? post._id : post._id}`} className={classes.link}>
-								<Paper style={{ width: '400px' }}>
-									<Card style={{ width: 'fit-content' }}>
-										{' '}
-										<Container
-											style={{
-												background: `url(${post.titleImg})`,
-												height: '250px',
-												width: '450px',
-												margin: '0.5rem',
-												backgroundSize: 'cover',
-												backgroundRepeat: 'no-repeat',
-											}}
-										>
-											<div style={{
-												top: '75%', position:
-													'relative', width: '400px', textAlign: 'center'
-											}}>
-												<div
-													style={{
-														fontSize: '25px', opacity: '1',
-														width: '400px',
-														height:'70px',
-														background: 'linear-gradient(90deg, rgba(122,109,109,0) 0%, rgba(207,207,221,0.6334908963585435) 45%, rgba(227,237,238,0) 100%)',
-														fontWeight: 'bold'
-													}}
-													dangerouslySetInnerHTML={{
-														__html: General.length ? post.title : '',
-													}}
-												/></div>
+					</Link>
+				))}
+			</Grid>
 
-										</Container>
-									</Card>
-								</Paper>
-
+			<Grid item xs={4} className="animated bounceIn delay-3s">
+				<Grid item>
+					<Card className={classes.root1}>
+						<CardActionArea>
+							<CardMedia
+								component="img"
+								alt="Contemplative Reptile"
+								height="150"
+								width="120"
+								image={Medical.length ? medicalImg : img}
+								title="Contemplative Reptile"
+							/>
+							<CardContent>
+								<Typography
+									variant="body2"
+									color="textSecondary"
+									component="p"
+									style={{
+										maxWidth: '400px',
+										maxHeight: '130px',
+										overflow: 'hidden',
+										fontWeight: 'bold',
+										fontSize: '1.2rem',
+									}}
+								>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: Medical.length ? Medical[0].title : '',
+										}}
+									/>
+								</Typography>
+							</CardContent>
+						</CardActionArea>
+						<CardActions>
+							<Link
+								to={`/article/${Medical.length ? Medical[0]._id : Medical._id}`}
+								className={classes.link}
+							>
+								<IconButton>
+									{' '}
+									<span style={{ fontSize: '15px' }}>See More</span>
+									<OpenInNewIcon
+										style={{
+											float: 'right',
+										}}
+									/>
+								</IconButton>
 							</Link>
-						))}
-					</Grid>
-
-					<Grid item xs={4} className="animated bounceIn delay-3s">
-						<Grid item>
-							<Card className={classes.root1}>
-								<CardActionArea>
-									<CardMedia
-										component="img"
-										alt="Contemplative Reptile"
-										height="150"
-										width="120"
-										image={Medical.length ? medicalImg : img}
-										title="Contemplative Reptile"
-									/>
-									<CardContent>
-										<Typography
-											variant="body2"
-											color="textSecondary"
-											component="p"
-											style={{
-												maxWidth: '400px',
-												maxHeight: '130px',
-												overflow: 'hidden',
-												fontWeight: 'bold',
-												fontSize: '1.2rem',
-											}}
-										>
-											<div
-												dangerouslySetInnerHTML={{
-													__html: Medical.length ? Medical[0].title : '',
-												}}
-											/>
-										</Typography>
-									</CardContent>
-								</CardActionArea>
-								<CardActions>
-									<Link
-										to={`/article/${Medical.length ? Medical[0]._id : Medical._id}`}
-										className={classes.link}
-									>
-										<IconButton>
-											{' '}
-											<span style={{ fontSize: '15px' }}>See More</span>
-											<OpenInNewIcon
-												style={{
-													float: 'right',
-												}}
-											/>
-										</IconButton>
-									</Link>
-								</CardActions>
-							</Card>
-						</Grid>
-					</Grid>
-					<Grid item xs={4} className="animated bounceIn delay-4s">
-						<Grid item>
-							<Card className={classes.root1}>
-								<CardActionArea>
-									<CardMedia
-										component="img"
-										alt="Contemplative Reptile"
-										height="150"
-										width="100"
-										image={Social.length ? socialImg : img}
-										title="Contemplative Reptile"
-									/>
-									<CardContent>
-										<Typography
-											variant="body2"
-											color="textSecondary"
-											component="p"
-											style={{
-												maxWidth: '400px',
-												fontWeight: 'bold',
-												fontSize: '1.2rem',
-												maxHeight: '130px',
-												overflow: 'hidden',
-											}}
-										>
-											<div
-												dangerouslySetInnerHTML={{
-													__html: Social.length ? Social[0].title : '',
-												}}
-											/>
-										</Typography>
-									</CardContent>
-								</CardActionArea>
-								<CardActions>
-									<Link
-										to={`/article/${Social.length ? Social[0]._id : Social._id}`}
-										className={classes.link}
-									>
-										<IconButton>
-											{' '}
-											<span style={{ fontSize: '15px' }}>See More</span>
-											<OpenInNewIcon
-												style={{
-													float: 'right',
-												}}
-											/>
-										</IconButton>
-									</Link>
-								</CardActions>
-							</Card>
-						</Grid>
-					</Grid>
+						</CardActions>
+					</Card>
 				</Grid>
-			</div >
+			</Grid>
+			<Grid item xs={4} className="animated bounceIn delay-4s">
+				<Grid item>
+					<Card className={classes.root1}>
+						<CardActionArea>
+							<CardMedia
+								component="img"
+								alt="Contemplative Reptile"
+								height="150"
+								width="100"
+								image={Social.length ? socialImg : img}
+								title="Contemplative Reptile"
+							/>
+							<CardContent>
+								<Typography
+									variant="body2"
+									color="textSecondary"
+									component="p"
+									style={{
+										maxWidth: '400px',
+										fontWeight: 'bold',
+										fontSize: '1.2rem',
+										maxHeight: '130px',
+										overflow: 'hidden',
+									}}
+								>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: Social.length ? Social[0].title : '',
+										}}
+									/>
+								</Typography>
+							</CardContent>
+						</CardActionArea>
+						<CardActions>
+							<Link
+								to={`/article/${Social.length ? Social[0]._id : Social._id}`}
+								className={classes.link}
+							>
+								<IconButton>
+									{' '}
+									<span style={{ fontSize: '15px' }}>See More</span>
+									<OpenInNewIcon
+										style={{
+											float: 'right',
+										}}
+									/>
+								</IconButton>
+							</Link>
+						</CardActions>
+					</Card>
+				</Grid>
+			</Grid>
+		</Grid>
+	</div >
 		);
 };
 

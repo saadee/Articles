@@ -25,6 +25,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { updateDate } from '../../../actions/post';
 import { showPost } from '../../../actions/post';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -63,7 +64,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPost, post: { posts, loading, _id } }) => {
+const UserProfile = ({
+	auth: { user },
+	getPosts,
+	deletePost,
+	isAuthenticated,
+	updateDate,
+	showPost,
+	post: { posts, loading, _id },
+}) => {
 	useEffect(() => {
 		getPosts();
 	}, [getPosts]);
@@ -90,6 +99,9 @@ const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPos
 	const deleteP = (e) => {
 		toast.warn('Post been Deleted');
 	};
+	if (!isAuthenticated) {
+		return <Redirect to="/" />;
+	}
 	return loading == null ? (
 		<Fragment>
 			<Spinner />
@@ -103,7 +115,7 @@ const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPos
 				}}
 			>
 				<Typography variant="h4" style={{ margin: 'auto' }}>
-					Welcome 
+					Welcome
 				</Typography>
 				<br />
 				<Link to="/write" style={{ textDecoration: 'none' }}>
@@ -114,7 +126,7 @@ const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPos
 				</Link>{' '}
 				<br />
 				<br /> <br />
-				<Link to='/' style={{ textDecoration: 'none' }}>
+				<Link to="/" style={{ textDecoration: 'none' }}>
 					<Button variant="outlined" color="secondary" style={{ margin: 'auto' }}>
 						<Typography variant="object">View All Article</Typography>
 					</Button>
@@ -220,11 +232,13 @@ UserProfile.propTypes = {
 	deletePost: PropTypes.func.isRequired,
 	updateDate: PropTypes.func.isRequired,
 	showPost: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
 	auth: state.auth,
 	post: state.post,
+	isAuthenticated: state.auth.isAuthenticated,
 });
 export default connect(mapStateToProps, {
 	getPosts,
