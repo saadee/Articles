@@ -103,7 +103,7 @@ const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPos
 				}}
 			>
 				<Typography variant="h4" style={{ margin: 'auto' }}>
-					Welcome {user.email}
+					Welcome 
 				</Typography>
 				<br />
 				<Link to="/write" style={{ textDecoration: 'none' }}>
@@ -114,7 +114,7 @@ const UserProfile = ({ auth: { user }, getPosts, deletePost, updateDate, showPos
 				</Link>{' '}
 				<br />
 				<br /> <br />
-				<Link to="/articles" style={{ textDecoration: 'none' }}>
+				<Link to='/' style={{ textDecoration: 'none' }}>
 					<Button variant="outlined" color="secondary" style={{ margin: 'auto' }}>
 						<Typography variant="object">View All Article</Typography>
 					</Button>

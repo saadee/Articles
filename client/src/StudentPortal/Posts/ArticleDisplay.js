@@ -93,15 +93,7 @@ const ArticleDisplay = ({ getPost, post: { post, loading }, match }) => {
 					<Container>
 						<Card className={classes.root}>
 							<CardHeader
-								title={
-									<Typography variant="h5" className={classes.name}>
-										<Typography variant="body2" component="p" color="secondary">
-											Submitted By{' '}
-										</Typography>
 
-										{post.name}
-									</Typography>
-								}
 								subheader={
 									<Typography variant="p" className={classes.date}>
 										{new Date(post.date).toDateString()}

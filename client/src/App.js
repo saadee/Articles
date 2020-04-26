@@ -30,10 +30,10 @@ const App = () => {
       <Router>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={login} />
+            <Route exact path="/login" component={login} />
             <Route exact path="/signup" component={signup} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/articles" component={ArticleHome} />
+            <Route exact path="/" component={ArticleHome} />
             <Route exact path="/write" component={TextEditor} />
             <Route exact path="/article/:id" component={ArticleDisplay} />
             <Route exact path="/article/edit/:id" component={EditArticle} />

@@ -156,7 +156,7 @@ class TextEditor extends Component {
 						PUBLISH
 					</Button>
 					<ToastContainer />
-					<Link to="/articles" style={{ textDecoration: 'none', margin: '1rem' }}>
+					<Link to="/" style={{ textDecoration: 'none', margin: '1rem' }}>
 						<Button variant="outlined" color="primary" style={{ margin: '1rem' }}>
 							View Articles
 						</Button>
