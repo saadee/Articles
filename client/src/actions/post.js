@@ -1,161 +1,176 @@
-import axios from "axios";
+import axios from 'axios';
 
 // get posts
 export const getPosts = () => async (dispatch) => {
-  try {
-    const res = await axios.get("api/posts");
+	try {
+		const res = await axios.get('api/posts');
 
-    dispatch({
-      type: "GET_POSTS",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'GET_POSTS',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
 // get post bu id
 export const getPost = (id) => async (dispatch) => {
-  try {
-    const res = await axios.get(`/api/posts/${id}`);
+	try {
+		const res = await axios.get(`/api/posts/${id}`);
 
-    dispatch({
-      type: "GET_POST",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'GET_POST',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
 // Update post by id
 export const updatePost = (payload) => async (dispatch) => {
-  try {
-    // let fd = new FormData();
+	try {
+		// let fd = new FormData();
 
-    // for (var item in payload) {
-    //   fd.append(item, payload[item]);
-    // }
-    const res = await axios.put(`/api/posts/${payload._id}`, payload);
+		// for (var item in payload) {
+		//   fd.append(item, payload[item]);
+		// }
+		const res = await axios.put(`/api/posts/${payload._id}`, payload);
 
-    dispatch({
-      type: "UPDATE_POST",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'UPDATE_POST',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 }; // Update post by id
 export const updateDate = (id, date) => async (dispatch) => {
-  try {
-    // let fd = new FormData();
+	try {
+		// let fd = new FormData();
 
-    // for (var item in payload) {
-    //   fd.append(item, payload[item]);
+		// for (var item in payload) {
+		//   fd.append(item, payload[item]);
 
-    // }
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+		// }
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
 
-    const body = JSON.stringify({ date });
-    const res = await axios.put(`/api/posts/date/${id}`, body, config);
+		const body = JSON.stringify({ date });
+		const res = await axios.put(`/api/posts/date/${id}`, body, config);
 
-    dispatch({
-      type: "UPDATE_DATE",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'UPDATE_DATE',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
 export const showPost = (id, show) => async (dispatch) => {
-  try {
-    // let fd = new FormData();
+	try {
+		// let fd = new FormData();
 
-    // for (var item in payload) {
-    //   fd.append(item, payload[item]);
+		// for (var item in payload) {
+		//   fd.append(item, payload[item]);
 
-    // }
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+		// }
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
 
-    const body = JSON.stringify({ show });
-    const res = await axios.put(`/api/posts/show/${id}`, body, config);
+		const body = JSON.stringify({ show });
+		const res = await axios.put(`/api/posts/show/${id}`, body, config);
 
-    dispatch({
-      type: "UPDATE_SHOW",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'UPDATE_SHOW',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
- // Delete Post
+export const getViews = (id) => async (dispatch) => {
+	try {
+		const res = await axios.put(`/api/posts/views/${id}`);
+
+		dispatch({
+			type: 'SHOW_VIEWS',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
+};
+// Delete Post
 export const deletePost = (id) => async (dispatch) => {
-  try {
-    const res = await axios.delete(`/api/posts/${id}`);
-    const posts = res.data;
-    dispatch({
-      type: "DELETE_POST",
-      payload: { id, posts },
-    });
-    console.log(res);
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+	try {
+		const res = await axios.delete(`/api/posts/${id}`);
+		const posts = res.data;
+		dispatch({
+			type: 'DELETE_POST',
+			payload: { id, posts },
+		});
+		console.log(res);
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
 
 // Create posts
 export const addPost = ({ title, content, image }) => async (dispatch) => {
-  let fData = new FormData();
-  fData.append("name", title);
-  fData.append("content", content);
-  fData.append("image", image);
-  try {
-    const res = await axios.post("api/posts", fData);
+	let fData = new FormData();
+	fData.append('name', title);
+	fData.append('content', content);
+	fData.append('image', image);
+	try {
+		const res = await axios.post('api/posts', fData);
 
-    dispatch({
-      type: "ADD_POSTS",
-      payload: res.data,
-    });
-  } catch (err) {
-    dispatch({
-      type: "POSTS_ERR",
-      payload: { msg: err.message },
-    });
-  }
+		dispatch({
+			type: 'ADD_POSTS',
+			payload: res.data,
+		});
+	} catch (err) {
+		dispatch({
+			type: 'POSTS_ERR',
+			payload: { msg: err.message },
+		});
+	}
 };
 
 export const addArticle = (data) => async (dispatch) => {
-  try {
-    const res = await axios.post("/api/posts", data);
-    dispatch({
-      type: "ADD_ARTICLE",
-      payload: res.data,
-    });
-  } catch (err) {
-    console.log(err.message);
-  }
+	try {
+		const res = await axios.post('/api/posts', data);
+		dispatch({
+			type: 'ADD_ARTICLE',
+			payload: res.data,
+		});
+	} catch (err) {
+		console.log(err.message);
+	}
 };

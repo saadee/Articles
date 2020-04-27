@@ -17,7 +17,10 @@ const PostSchema = new mongoose.Schema({
 	image: {
 		type: String,
 	},
-
+	views: {
+		type: Number,
+		default: 0,
+	},
 	visibility: {
 		type: Boolean,
 		default: true,

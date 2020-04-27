@@ -27,6 +27,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import TelegramIcon from '@material-ui/icons/Telegram';
+import { getViews } from '../../actions/post'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -72,14 +73,14 @@ const useStyles = makeStyles((theme) => ({
 		width: 'fit-content',
 	},
 }));
-const ArticleDisplay = ({ getPost, post: { post, loading }, match }) => {
+
+const ArticleDisplay = ({ getPost, getViews, post: { post, loading }, match }) => {
 	const classes = useStyles();
 	useEffect(() => {
 		getPost(match.params.id);
+		getViews(match.params.id);
 
-		console.log('Post Title', post.title);
-	}, [getPost]);
-
+	}, [getPost,]);
 	// const classes = useStyles();
 
 	return loading == null ? (
@@ -93,6 +94,16 @@ const ArticleDisplay = ({ getPost, post: { post, loading }, match }) => {
 					<Container>
 						<Card className={classes.root}>
 							<CardHeader
+								title={
+									<Typography variant='h6' color='primary'
+
+										style={{ textAlign: 'CENTER', position: 'absolute', top: '40%', right: '20%' }}>
+										Article Viewed
+								<Typography variant='body2' color='secondary'>{post.views} <span></span> Times</Typography>
+
+
+									</Typography>
+								}
 
 								subheader={
 									<Typography variant="p" className={classes.date}>
@@ -128,8 +139,9 @@ const ArticleDisplay = ({ getPost, post: { post, loading }, match }) => {
 ArticleDisplay.propTypes = {
 	getPost: PropTypes.func.isRequired,
 	post: PropTypes.object.isRequired,
+	getViews: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
 	post: state.post,
 });
-export default connect(mapStateToProps, { getPost })(ArticleDisplay);
+export default connect(mapStateToProps, { getPost, getViews })(ArticleDisplay);

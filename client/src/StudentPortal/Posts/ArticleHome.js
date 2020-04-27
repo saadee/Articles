@@ -23,6 +23,7 @@ import lizard from './i.jpg';
 import { fadeIn } from 'react-animations';
 import $ from 'jquery';
 import { Container } from '@material-ui/core';
+import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -178,7 +179,7 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 						>
 							<div style={{
 								top: '60%', position: 'relative',
-								  width: '100%'
+								width: '100%'
 							}}>
 								<div
 									style={{
@@ -193,7 +194,12 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 									dangerouslySetInnerHTML={{
 										__html: General.length ? General[0].title : '',
 									}}
-								/></div>
+								/>
+								<div style={{ position: 'absolute', top: '45%', right: '0%', fontFamily: 'cursive', fontSize: '1rem' }}>
+									<span style={{ marginTop: '20px' }}><RemoveRedEyeIcon /></span>	<span style={{ position: 'absolute', marginLeft: '5px' }}>{General.length ? General[0].views : ''}</span>
+								</div>
+
+							</div>
 
 						</Container>
 					</Card>
@@ -244,7 +250,12 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 											dangerouslySetInnerHTML={{
 												__html: General.length ? post.title : '',
 											}}
-										/></div>
+										/>
+										<div style={{ position: 'absolute', top: '45%', right: '2%', color: 'white', fontFamily: 'cursive', fontSize: '1rem' }}>
+											<span style={{ marginTop: '20px' }}><RemoveRedEyeIcon /></span>	<span style={{ position: 'absolute', marginLeft: '5px', marginRight: '30px' }}>{General.length ? post.views : ''}</span>
+
+										</div>
+									</div>
 
 								</Container>
 							</Card>
@@ -256,106 +267,100 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 
 			<Grid item xs={4} className="animated bounceIn delay-3s">
 				<Grid item>
-					<Card className={classes.root1}>
-						<CardActionArea>
-							<CardMedia
-								component="img"
-								alt="Contemplative Reptile"
-								height="150"
-								width="120"
-								image={Medical.length ? medicalImg : img}
-								title="Contemplative Reptile"
-							/>
-							<CardContent>
-								<Typography
-									variant="body2"
-									color="textSecondary"
-									component="p"
-									style={{
-										maxWidth: '400px',
-										maxHeight: '130px',
-										overflow: 'hidden',
-										fontWeight: 'bold',
-										fontSize: '1.2rem',
-									}}
-								>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: Medical.length ? Medical[0].title : '',
-										}}
-									/>
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-						<CardActions>
-							<Link
-								to={`/article/${Medical.length ? Medical[0]._id : Medical._id}`}
-								className={classes.link}
-							>
-								<IconButton>
-									{' '}
-									<span style={{ fontSize: '15px' }}>See More</span>
-									<OpenInNewIcon
+					<Link
+						to={`/article/${Medical.length ? Medical[0]._id : Medical._id}`}
+						className={classes.link}
+					>
+						<Card className={classes.root1}>
+							<CardActionArea>
+								<CardMedia
+									component="img"
+									alt="Contemplative Reptile"
+									height="150"
+									width="120"
+									image={Medical.length ? medicalImg : img}
+									title="Contemplative Reptile"
+								/>
+								<CardContent>
+									<Typography
+										variant="body2"
+										color="textSecondary"
+										component="p"
 										style={{
-											float: 'right',
+											maxWidth: '400px',
+											maxHeight: '130px',
+											overflow: 'hidden',
+											fontWeight: 'bold',
+											fontSize: '1.2rem',
 										}}
-									/>
-								</IconButton>
-							</Link>
-						</CardActions>
-					</Card>
+									>
+										<div
+											dangerouslySetInnerHTML={{
+												__html: Medical.length ? Medical[0].title : '',
+											}}
+										/>
+									</Typography>
+								</CardContent>
+							</CardActionArea>
+							<CardActions>
+								<div style={{ position: 'relative', right: '-88%' }}>
+									<RemoveRedEyeIcon />
+
+									<span style={{ position: 'absolute', fontFamily: 'cursive', marginLeft: '5px' }}>{Medical.length ? Medical[0].views : ''}</span>
+								</div>
+
+							</CardActions>
+
+						</Card>
+					</Link>
 				</Grid>
 			</Grid>
 			<Grid item xs={4} className="animated bounceIn delay-4s">
 				<Grid item>
-					<Card className={classes.root1}>
-						<CardActionArea>
-							<CardMedia
-								component="img"
-								alt="Contemplative Reptile"
-								height="150"
-								width="100"
-								image={Social.length ? socialImg : img}
-								title="Contemplative Reptile"
-							/>
-							<CardContent>
-								<Typography
-									variant="body2"
-									color="textSecondary"
-									component="p"
-									style={{
-										maxWidth: '400px',
-										fontWeight: 'bold',
-										fontSize: '1.2rem',
-										maxHeight: '130px',
-										overflow: 'hidden',
-									}}
-								>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: Social.length ? Social[0].title : '',
-										}}
-									/>
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-						<CardActions>
-							<Link
-								to={`/article/${Social.length ? Social[0]._id : Social._id}`}
-								className={classes.link}
-							>
-								<IconButton>
-									{' '}
-									<span style={{ fontSize: '15px' }}>See More</span>
-									<OpenInNewIcon
+					<Link
+						to={`/article/${Social.length ? Social[0]._id : Social._id}`}
+						className={classes.link}
+					>
+						<Card className={classes.root1}>
+							<CardActionArea>
+								<CardMedia
+									component="img"
+									alt="Contemplative Reptile"
+									height="150"
+									width="100"
+									image={Social.length ? socialImg : img}
+									title="Contemplative Reptile"
+								/>
+								<CardContent>
+									<Typography
+										variant="body2"
+										color="textSecondary"
+										component="p"
 										style={{
-											float: 'right',
+											maxWidth: '400px',
+											fontWeight: 'bold',
+											fontSize: '1.2rem',
+											maxHeight: '130px',
+											overflow: 'hidden',
 										}}
-									/>
-								</IconButton>
-							</Link>
-						</CardActions>
-					</Card>
+									>
+										<div
+											dangerouslySetInnerHTML={{
+												__html: Social.length ? Social[0].title : '',
+											}}
+										/>
+									</Typography>
+								</CardContent>
+							</CardActionArea>
+							<CardActions>
+								<div style={{ position: 'relative', right: '-88%' }}>
+									<RemoveRedEyeIcon />
+
+									<span style={{ position: 'absolute', fontFamily: 'cursive', marginLeft: '5px' }}>{Social.length ? Social[0].views : ''}</span>
+								</div>
+							</CardActions>
+						</Card>
+					</Link>
 				</Grid>
 			</Grid>
 		</Grid>
