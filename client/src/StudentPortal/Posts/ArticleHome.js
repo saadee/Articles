@@ -195,8 +195,10 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 										__html: General.length ? General[0].title : '',
 									}}
 								/>
-								<div style={{ position: 'absolute', top: '45%', right: '0%', fontFamily: 'cursive', fontSize: '1rem' }}>
-									<span style={{ marginTop: '20px' }}><RemoveRedEyeIcon /></span>	<span style={{ position: 'absolute', marginLeft: '5px' }}>{General.length ? General[0].views : ''}</span>
+								<div style={{ position: 'absolute', top: '45%', right: '5%', display: 'flex', color: 'lightblue', fontFamily: 'cursive', fontSize: '1rem' }}>
+									<div style={{ marginRight: '5px' }}><RemoveRedEyeIcon /></div>
+									<div>Views : {General.length ? General[0].views : ''}</div>
+
 								</div>
 
 							</div>
@@ -251,8 +253,9 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 												__html: General.length ? post.title : '',
 											}}
 										/>
-										<div style={{ position: 'absolute', top: '45%', right: '2%', color: 'white', fontFamily: 'cursive', fontSize: '1rem' }}>
-											<span style={{ marginTop: '20px' }}><RemoveRedEyeIcon /></span>	<span style={{ position: 'absolute', marginLeft: '5px', marginRight: '30px' }}>{General.length ? post.views : ''}</span>
+										<div style={{ position: 'absolute', top: '45%', right: '3%', display: 'flex', color: 'lightblue', fontFamily: 'cursive', fontSize: '1rem' }}>
+											<div style={{ marginRight: '5px' }}><RemoveRedEyeIcon /></div>
+											<div>Views : {General.length ? post.views : ''}</div>
 
 										</div>
 									</div>
@@ -303,10 +306,10 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 								</CardContent>
 							</CardActionArea>
 							<CardActions>
-								<div style={{ position: 'relative', right: '-88%' }}>
-									<RemoveRedEyeIcon />
+								<div style={{ position: 'relative', right: '-70%', display: 'flex', color: 'black', fontFamily: 'cursive', fontSize: '1rem' }}>
+									<div style={{ marginRight: '5px' }}><RemoveRedEyeIcon /></div>
+									<div>Views : {Medical.length ? Medical[0].views : ''}</div>
 
-									<span style={{ position: 'absolute', fontFamily: 'cursive', marginLeft: '5px' }}>{Medical.length ? Medical[0].views : ''}</span>
 								</div>
 
 							</CardActions>
@@ -353,10 +356,10 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 								</CardContent>
 							</CardActionArea>
 							<CardActions>
-								<div style={{ position: 'relative', right: '-88%' }}>
-									<RemoveRedEyeIcon />
+								<div style={{ position: 'relative', right: '-70%', display: 'flex', color: 'black', fontFamily: 'cursive', fontSize: '1rem' }}>
+									<div style={{ marginRight: '5px' }}><RemoveRedEyeIcon /></div>
+									<div>Views : {Social.length ? Social[0].views : ''}</div>
 
-									<span style={{ position: 'absolute', fontFamily: 'cursive', marginLeft: '5px' }}>{Social.length ? Social[0].views : ''}</span>
 								</div>
 							</CardActions>
 						</Card>
