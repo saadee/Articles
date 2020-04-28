@@ -28,6 +28,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import { getViews } from '../../actions/post'
+import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye';
+
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -95,18 +97,23 @@ const ArticleDisplay = ({ getPost, getViews, post: { post, loading }, match }) =
 						<Card className={classes.root}>
 							<CardHeader
 								title={
-									<Typography variant='h6' color='primary'
+									<Typography variant='h6' color="primary" style={{ fontWeight: 'bolder', float: 'left' }} >
+										<span>
+											<RemoveRedEyeIcon style={{ fontSize: '40px', marginTop: '10px',marginRight:'0px', position: 'absolute' }} />
 
-										style={{ textAlign: 'CENTER', position: 'absolute', top: '40%', right: '20%' }}>
-										Article Viewed
-								<Typography variant='body2' color='secondary'>{post.views} <span></span> Times</Typography>
-
+										</span>
+										<span style={{
+											 position: 'relative'
+											, fontSize: '30px', color: 'black',marginLeft:'40px'
+										}} >
+											{post.views > 1000 ? (post.views / 1000).toFixed(2) + 'k' : post.views}
+										</span>		 <span style={{ fontSize: '25px', color: "black" }}>Views</span>
 
 									</Typography>
 								}
 
 								subheader={
-									<Typography variant="p" className={classes.date}>
+									<Typography variant="h6" style={{ fontFamily: 'bold' }} className={classes.date}>
 										{new Date(post.date).toDateString()}
 									</Typography>
 								}
