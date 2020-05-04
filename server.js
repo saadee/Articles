@@ -4,8 +4,35 @@ const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
 
-// Connceting Database
 connectDB();
+// dropbox setup
+
+require('isomorphic-fetch'); // or another library of choice.
+var Dropbox = require('dropbox').Dropbox  ;
+var dbx = new Dropbox({ accessToken: 'OKcQlPoAlQAAAAAAAAACAiGi1KcRr9fVdI5LtdoXMmfLKpgzlXPQQcr4_4-roV-Y' });
+// checking the user
+
+// dbx.usersGetCurrentAccount()
+//   .then(function(response) {
+//     console.log(response);
+//   })
+//   .catch(function(error) {
+//     console.error(error);
+//   });
+
+// requesting API
+
+dbx.filesListFolder({path: ''})
+  .then(function(response) {
+    console.log(response.entries);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+
+// Connceting Database
+
 
 app.use(express.json({ extended: false, limit: "10mb" }));
 
