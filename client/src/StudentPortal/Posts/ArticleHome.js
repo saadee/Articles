@@ -139,7 +139,7 @@ const ArticleHome = ({ getPosts, post: { posts, loading, _id }, user, getCurrent
 			case 'Medical':
 				Medical.push(post);
 				break;
-			case 'Social':
+			case 'Social':	
 				Social.push(post);
 				break;
 			case 'Crisis':
